@@ -10,21 +10,21 @@
     .NET API Template with DDD Architecture
 </h3>
 
-
 <h4 align="center">
-	 <!-- Status: development -->
+  <!-- Status: development -->
     Status: Finished
 </h4>
 
 <p align="center">
  <a href="#about">About</a> •
  <a href="#features">Features</a> •
- <a href="#layout">Layout</a> •
- <a href="#how-it-works">How it works</a> •
- <a href="#tech-stack">Tech Stack</a> •
- <a href="#contributors">Contributors</a> •
+ <a href="#layout">Technologies</a> •
+ <a href="#how-it-works">Project Structure</a> •
+ <a href="#project-structure">Project Structure</a> •
+ <a href="#contributors">Getting Started</a> •
+<a href="#contributors">Documentation</a> •
+<a href="#contributors">Testing</a> •<a href="#contributors">Configuration</a> •<a href="#contributors">License</a> •
  <a href="#author">Author</a> •
- <a href="#user-content-license">License</a>
 
 </p>
 
@@ -32,12 +32,10 @@
 
 A modern, clean, and scalable .NET API template following Domain-Driven Design (DDD) principles and Clean Architecture.
 
-
-
-
 ## 🚀 Features
 
 ### Architecture
+
 - [x] Clean Architecture implementation
 - [x] Domain-Driven Design (DDD) principles
 - [x] SOLID principles
@@ -45,12 +43,14 @@ A modern, clean, and scalable .NET API template following Domain-Driven Design (
 - [x] Repository pattern implementation
 
 ### Project Structure
+
 - [x] **Domain Layer**: Core business logic and entities
 - [x] **Application Layer**: Application services and use cases
 - [x] **Infrastructure Layer**: External services, database access, and implementations
 - [x] **API Layer**: REST API endpoints and controllers
 
 ### Technical Features
+
 - [x] .NET 9.0
 - [x] Swagger/OpenAPI documentation
 - [x] Built-in API versioning
@@ -62,6 +62,7 @@ A modern, clean, and scalable .NET API template following Domain-Driven Design (
 - [x] XML documentation support
 
 ### Development Features
+
 - [x] Unit testing setup
 - [x] Integration testing support
 - [x] Debug configuration for VS Code
@@ -71,19 +72,23 @@ A modern, clean, and scalable .NET API template following Domain-Driven Design (
 ## 🛠️ Technologies
 
 ### Core Technologies
+
 - **.NET 9.0**: Latest version of .NET framework
 - **C#**: Modern C# features and syntax
 - **ASP.NET Core**: Web API framework
 
 ### Documentation & API
+
 - **Swagger/OpenAPI**: API documentation and testing
 - **Microsoft.AspNetCore.OpenApi**: OpenAPI specification support
 
 ### Testing
+
 - **xUnit**: Unit testing framework
 - **Moq**: Mocking framework for unit tests
 
 ### Development Tools
+
 - **Visual Studio Code**: Development environment
 - **.NET CLI**: Command-line tools
 - **Git**: Version control
@@ -105,6 +110,7 @@ A modern, clean, and scalable .NET API template following Domain-Driven Design (
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - .NET 9.0 SDK
 - Visual Studio Code or Visual Studio 2022
 - Git
@@ -112,32 +118,39 @@ A modern, clean, and scalable .NET API template following Domain-Driven Design (
 ### Running the Project
 
 1. Clone the repository
+
 ```bash
 git clone [repository-url]
 ```
 
 2. Navigate to the project directory
+
 ```bash
 cd template-dot-net-api
 ```
 
 3. Restore dependencies
+
 ```bash
 dotnet restore
 ```
 
 4. Build the solution
+
 ```bash
 dotnet build
 ```
 
 5. Run the API
+
 ```bash
 dotnet run --project src/API
 ```
 
 ### Debugging
+
 The project includes VS Code launch configurations for debugging:
+
 - Press F5 to start debugging
 - Use breakpoints to inspect variables
 - Use the Debug toolbar for step-by-step execution
@@ -145,6 +158,7 @@ The project includes VS Code launch configurations for debugging:
 ## 📚 Documentation
 
 API documentation is available through Swagger UI when running the application:
+
 - Navigate to `/swagger` endpoint
 - Interactive API documentation
 - Request/Response examples
@@ -153,11 +167,13 @@ API documentation is available through Swagger UI when running the application:
 ## 🧪 Testing
 
 ### Running Tests
+
 ```bash
 dotnet test
 ```
 
 ### Test Coverage
+
 - Unit tests for Domain layer
 - Unit tests for Application layer
 - Integration test support
@@ -165,11 +181,12 @@ dotnet test
 ## 🔧 Configuration
 
 The project uses the following configuration files:
+
 - `appsettings.json`: Application settings
 - `appsettings.Development.json`: Development-specific settings
 - `.editorconfig`: Code style and formatting rules
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
