@@ -106,3 +106,5 @@
 /home/itrack/template-dot-net-api/tests/Application.UnitTests/obj/Debug/net9.0/Application.UnitTests.pdb
 /home/itrack/template-dot-net-api/tests/Application.UnitTests/obj/Debug/net9.0/Application.UnitTests.genruntimeconfig.cache
 /home/itrack/template-dot-net-api/tests/Application.UnitTests/obj/Debug/net9.0/ref/Application.UnitTests.dll
+/home/itrack/template-dot-net-api/tests/Application.UnitTests/bin/Debug/net9.0/Application.xml
+/home/itrack/template-dot-net-api/tests/Application.UnitTests/obj/Debug/net9.0/Application.UnitTests.sourcelink.json

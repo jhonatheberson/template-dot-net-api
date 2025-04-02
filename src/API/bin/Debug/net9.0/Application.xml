@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Application</name>
+    </assembly>
+    <members>
+        <member name="T:Application.Services.ProductService">
+            <summary>
+            Service responsible for handling product-related operations
+            </summary>
+        </member>
+        <member name="M:Application.Services.ProductService.#ctor(Domain.Interfaces.IProductRepository)">
+            <summary>
+            Initializes a new instance of the ProductService
+            </summary>
+            <param name="productRepository">The product repository dependency</param>
+        </member>
+        <member name="M:Application.Services.ProductService.GetByIdAsync(System.Guid)">
+            <summary>
+            Retrieves a product by its unique identifier
+            </summary>
+            <param name="id">The unique identifier of the product</param>
+            <returns>The product DTO if found, null otherwise</returns>
+        </member>
+        <member name="M:Application.Services.ProductService.GetAllAsync">
+            <summary>
+            Retrieves all products from the system
+            </summary>
+            <returns>A collection of product DTOs</returns>
+        </member>
+        <member name="M:Application.Services.ProductService.CreateAsync(System.String,System.String,System.Decimal,System.Int32)">
+            <summary>
+            Creates a new product in the system
+            </summary>
+            <param name="name">The name of the product</param>
+            <param name="description">The description of the product</param>
+            <param name="price">The price of the product</param>
+            <param name="stock">The initial stock quantity</param>
+            <returns>The created product DTO</returns>
+            <exception cref="!:DomainException">Thrown when the product data is invalid</exception>
+        </member>
+        <member name="M:Application.Services.ProductService.UpdateAsync(System.Guid,System.String,System.String,System.Decimal)">
+            <summary>
+            Updates an existing product's details
+            </summary>
+            <param name="id">The unique identifier of the product to update</param>
+            <param name="name">The new name of the product</param>
+            <param name="description">The new description of the product</param>
+            <param name="price">The new price of the product</param>
+            <exception cref="T:System.Exception">Thrown when the product is not found</exception>
+            <exception cref="!:DomainException">Thrown when the update data is invalid</exception>
+        </member>
+        <member name="M:Application.Services.ProductService.UpdateStockAsync(System.Guid,System.Int32)">
+            <summary>
+            Updates the stock quantity of an existing product
+            </summary>
+            <param name="id">The unique identifier of the product to update</param>
+            <param name="newStock">The new stock quantity</param>
+            <exception cref="T:System.Exception">Thrown when the product is not found</exception>
+            <exception cref="!:DomainException">Thrown when the new stock quantity is invalid</exception>
+        </member>
+        <member name="M:Application.Services.ProductService.DeleteAsync(System.Guid)">
+            <summary>
+            Deletes a product from the system
+            </summary>
+            <param name="id">The unique identifier of the product to delete</param>
+        </member>
+    </members>
+</doc>

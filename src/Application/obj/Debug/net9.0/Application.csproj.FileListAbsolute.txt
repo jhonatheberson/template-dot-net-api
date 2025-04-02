@@ -13,3 +13,6 @@
 /home/itrack/template-dot-net-api/src/Application/obj/Debug/net9.0/refint/Application.dll
 /home/itrack/template-dot-net-api/src/Application/obj/Debug/net9.0/Application.pdb
 /home/itrack/template-dot-net-api/src/Application/obj/Debug/net9.0/ref/Application.dll
+/home/itrack/template-dot-net-api/src/Application/obj/Debug/net9.0/Application.sourcelink.json
+/home/itrack/template-dot-net-api/src/Application/bin/Debug/net9.0/Application.xml
+/home/itrack/template-dot-net-api/src/Application/obj/Debug/net9.0/Application.xml

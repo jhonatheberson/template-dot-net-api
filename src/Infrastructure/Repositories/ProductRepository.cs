@@ -3,42 +3,51 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Interfaces;
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private static readonly Dictionary<Guid, Product> _products = new();
+        private readonly ApplicationDbContext _context;
+
+        public ProductRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task<Product?> GetByIdAsync(Guid id)
         {
-            return await Task.FromResult(_products.TryGetValue(id, out var product) ? product : null);
+            return await _context.Products.FindAsync(id);
         }
 
         public async Task<IEnumerable<Product>> GetAllAsync()
         {
-            return await Task.FromResult(_products.Values);
+            return await _context.Products.ToListAsync();
         }
 
         public async Task<Product> AddAsync(Product product)
         {
-            _products.Add(product.Id, product);
-            return await Task.FromResult(product);
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
+            return product;
         }
 
         public async Task UpdateAsync(Product product)
         {
-            if (_products.ContainsKey(product.Id))
-            {
-                _products[product.Id] = product;
-            }
-            await Task.CompletedTask;
+            _context.Entry(product).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            _products.Remove(id);
-            await Task.CompletedTask;
+            var product = await _context.Products.FindAsync(id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

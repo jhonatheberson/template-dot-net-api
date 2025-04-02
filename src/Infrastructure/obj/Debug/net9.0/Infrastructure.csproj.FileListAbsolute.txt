@@ -15,3 +15,7 @@
 /home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/refint/Infrastructure.dll
 /home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.pdb
 /home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/ref/Infrastructure.dll
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Infrastructure.runtimeconfig.json
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.sourcelink.json
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.genruntimeconfig.cache
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Application.xml

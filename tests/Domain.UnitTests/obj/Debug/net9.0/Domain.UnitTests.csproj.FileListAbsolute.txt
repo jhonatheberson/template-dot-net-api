@@ -99,3 +99,4 @@
 /home/itrack/template-dot-net-api/tests/Domain.UnitTests/obj/Debug/net9.0/Domain.UnitTests.pdb
 /home/itrack/template-dot-net-api/tests/Domain.UnitTests/obj/Debug/net9.0/Domain.UnitTests.genruntimeconfig.cache
 /home/itrack/template-dot-net-api/tests/Domain.UnitTests/obj/Debug/net9.0/ref/Domain.UnitTests.dll
+/home/itrack/template-dot-net-api/tests/Domain.UnitTests/obj/Debug/net9.0/Domain.UnitTests.sourcelink.json

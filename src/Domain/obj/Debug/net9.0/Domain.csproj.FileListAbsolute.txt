@@ -9,3 +9,4 @@
 /home/itrack/template-dot-net-api/src/Domain/obj/Debug/net9.0/refint/Domain.dll
 /home/itrack/template-dot-net-api/src/Domain/obj/Debug/net9.0/Domain.pdb
 /home/itrack/template-dot-net-api/src/Domain/obj/Debug/net9.0/ref/Domain.dll
+/home/itrack/template-dot-net-api/src/Domain/obj/Debug/net9.0/Domain.sourcelink.json
