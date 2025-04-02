@@ -10,7 +10,7 @@ obj/
 *.userprefs
 
 # Visual Studio Code files
-.vscode/
+# .vscode/
 *.code-workspace
 
 # Rider

@@ -1,39 +1,72 @@
-# .NET API Template with DDD Architecture
+<h1 align="center">
+    <img alt="Ecoleta" title="#Ecoleta" src="./assets/banner.png" />
+</h1>
+
+<h1 align="center">
+   🙂 <a href="#"> API .NET </a>
+</h1>
+
+<h3 align="center">
+    .NET API Template with DDD Architecture
+</h3>
+
+
+<h4 align="center">
+	 <!-- Status: development -->
+    Status: Finished
+</h4>
+
+<p align="center">
+ <a href="#about">About</a> •
+ <a href="#features">Features</a> •
+ <a href="#layout">Layout</a> •
+ <a href="#how-it-works">How it works</a> •
+ <a href="#tech-stack">Tech Stack</a> •
+ <a href="#contributors">Contributors</a> •
+ <a href="#author">Author</a> •
+ <a href="#user-content-license">License</a>
+
+</p>
+
+## About
 
 A modern, clean, and scalable .NET API template following Domain-Driven Design (DDD) principles and Clean Architecture.
+
+
+
 
 ## 🚀 Features
 
 ### Architecture
-- Clean Architecture implementation
-- Domain-Driven Design (DDD) principles
-- SOLID principles
-- CQRS pattern support
-- Repository pattern implementation
+- [x] Clean Architecture implementation
+- [x] Domain-Driven Design (DDD) principles
+- [x] SOLID principles
+- [x] CQRS pattern support
+- [x] Repository pattern implementation
 
 ### Project Structure
-- **Domain Layer**: Core business logic and entities
-- **Application Layer**: Application services and use cases
-- **Infrastructure Layer**: External services, database access, and implementations
-- **API Layer**: REST API endpoints and controllers
+- [x] **Domain Layer**: Core business logic and entities
+- [x] **Application Layer**: Application services and use cases
+- [x] **Infrastructure Layer**: External services, database access, and implementations
+- [x] **API Layer**: REST API endpoints and controllers
 
 ### Technical Features
-- .NET 9.0
-- Swagger/OpenAPI documentation
-- Built-in API versioning
-- Global error handling
-- Request/Response logging
-- Dependency Injection
-- Async/await patterns
-- Nullable reference types enabled
-- XML documentation support
+- [x] .NET 9.0
+- [x] Swagger/OpenAPI documentation
+- [x] Built-in API versioning
+- [x] Global error handling
+- [x] Request/Response logging
+- [x] Dependency Injection
+- [x] Async/await patterns
+- [x] Nullable reference types enabled
+- [x] XML documentation support
 
 ### Development Features
-- Unit testing setup
-- Integration testing support
-- Debug configuration for VS Code
-- EditorConfig for consistent coding style
-- Solution-wide code organization
+- [x] Unit testing setup
+- [x] Integration testing support
+- [x] Debug configuration for VS Code
+- [x] EditorConfig for consistent coding style
+- [x] Solution-wide code organization
 
 ## 🛠️ Technologies
 
