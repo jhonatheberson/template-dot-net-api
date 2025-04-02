@@ -1,8 +1,0 @@
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/bin/Debug/net9.0/CoverletSourceRootsMapping_Controller.UnitTests
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/obj/Debug/net9.0/Controller.UnitTests.csproj.AssemblyReference.cache
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/obj/Debug/net9.0/MvcTestingAppManifest.json
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/obj/Debug/net9.0/Controller.UnitTests.GeneratedMSBuildEditorConfig.editorconfig
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/obj/Debug/net9.0/Controller.UnitTests.AssemblyInfoInputs.cache
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/obj/Debug/net9.0/Controller.UnitTests.AssemblyInfo.cs
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/obj/Debug/net9.0/Controller.UnitTests.csproj.CoreCompileInputs.cache
-/home/itrack/template-dot-net-api/tests/Controller.UnitTests/obj/Debug/net9.0/Controller.UnitTests.sourcelink.json
