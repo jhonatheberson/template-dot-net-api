@@ -1,0 +1,17 @@
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Infrastructure.deps.json
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Infrastructure.dll
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Infrastructure.pdb
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Application.dll
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Domain.dll
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Domain.pdb
+/home/itrack/template-dot-net-api/src/Infrastructure/bin/Debug/net9.0/Application.pdb
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.csproj.AssemblyReference.cache
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.csproj.CoreCompileInputs.cache
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastr.15EFFBFE.Up2Date
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.dll
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/refint/Infrastructure.dll
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/Infrastructure.pdb
+/home/itrack/template-dot-net-api/src/Infrastructure/obj/Debug/net9.0/ref/Infrastructure.dll
