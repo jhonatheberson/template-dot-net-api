@@ -13,19 +13,23 @@ namespace Domain.UnitTests
             // Arrange
             var name = "Test Product";
             var description = "Test Description";
-            var price = 10.99m;
-            var stock = 100;
+            var urlLogo = "https://example.com/logo.png";
+            var apiKey = "1234567890";
+            var assistantId = "1234567890";
+            var realmId = "1234567890";
 
             // Act
-            var product = new Product(name, description, price, stock);
+            var product = new Product(name, description, urlLogo, apiKey, assistantId, realmId);
 
             // Assert
             Assert.Equal(name, product.Name);
             Assert.Equal(description, product.Description);
-            Assert.Equal(price, product.Price);
-            Assert.Equal(stock, product.Stock);
+            Assert.Equal(urlLogo, product.URL_Logo);
+            Assert.Equal(apiKey, product.api_key);
+            Assert.Equal(assistantId, product.assistant_id);
+            Assert.Equal(realmId, product.realm_id);
             Assert.NotEqual(Guid.Empty, product.Id);
-            Assert.NotNull(product.CreatedAt);
+            Assert.NotEqual(default, product.CreatedAt);
         }
 
         [Fact]
@@ -34,108 +38,84 @@ namespace Domain.UnitTests
             // Arrange
             var name = "";
             var description = "Test Description";
-            var price = 10.99m;
-            var stock = 100;
+            var urlLogo = "https://example.com/logo.png";
+            var apiKey = "1234567890";
+            var assistantId = "1234567890";
+            var realmId = "1234567890";
 
             // Act & Assert
-            Assert.Throws<DomainException>(() => new Product(name, description, price, stock));
+            Assert.Throws<DomainException>(() => new Product(name, description, urlLogo, apiKey, assistantId, realmId));
         }
 
         [Fact]
-        public void Create_WithNegativePrice_ShouldThrowException()
+        public void Create_WithEmptyURL_Logo_ShouldThrowException()
         {
             // Arrange
             var name = "Test Product";
             var description = "Test Description";
-            var price = -10.99m;
-            var stock = 100;
+            var urlLogo = "";
+            var apiKey = "1234567890";
+            var assistantId = "1234567890";
+            var realmId = "1234567890";
 
             // Act & Assert
-            Assert.Throws<DomainException>(() => new Product(name, description, price, stock));
+            Assert.Throws<DomainException>(() => new Product(name, description, urlLogo, apiKey, assistantId, realmId));
         }
 
         [Fact]
-        public void Create_WithNegativeStock_ShouldThrowException()
+        public void Create_WithEmptyApiKey_ShouldThrowException()
         {
             // Arrange
             var name = "Test Product";
             var description = "Test Description";
-            var price = 10.99m;
-            var stock = -100;
+            var urlLogo = "https://example.com/logo.png";
+            var apiKey = "";
+            var assistantId = "1234567890";
+            var realmId = "1234567890";
 
             // Act & Assert
-            Assert.Throws<DomainException>(() => new Product(name, description, price, stock));
+            Assert.Throws<DomainException>(() => new Product(name, description, urlLogo, apiKey, assistantId, realmId));
         }
 
         [Fact]
         public void UpdateDetails_WithValidData_ShouldUpdateProduct()
         {
             // Arrange
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
+            var product = new Product("Test Product", "Test Description", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890");
             var newName = "Updated Product";
             var newDescription = "Updated Description";
-            var newPrice = 20.99m;
+            var newUrlLogo = "https://example.com/updated-logo.png";
+            var newApiKey = "9876543210";
+            var newAssistantId = "9876543210";
+            var newRealmId = "9876543210";
 
             // Act
-            product.UpdateDetails(newName, newDescription, newPrice);
+            product.UpdateDetails(newName, newDescription, newUrlLogo, newApiKey, newAssistantId, newRealmId);
 
             // Assert
             Assert.Equal(newName, product.Name);
             Assert.Equal(newDescription, product.Description);
-            Assert.Equal(newPrice, product.Price);
-            Assert.NotNull(product.UpdatedAt);
+            Assert.Equal(newUrlLogo, product.URL_Logo);
+            Assert.Equal(newApiKey, product.api_key);
+            Assert.Equal(newAssistantId, product.assistant_id);
+            Assert.Equal(newRealmId, product.realm_id);
+            Assert.NotEqual(default, product.UpdatedAt);
         }
 
         [Fact]
         public void UpdateDetails_WithEmptyName_ShouldThrowException()
         {
             // Arrange
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
+            var product = new Product("Test Product", "Test Description", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890");
             var newName = "";
             var newDescription = "Updated Description";
-            var newPrice = 20.99m;
+            var newUrlLogo = "https://example.com/logo.png";
+            var newApiKey = "1234567890";
+            var newAssistantId = "1234567890";
+            var newRealmId = "1234567890";
 
             // Act & Assert
-            Assert.Throws<DomainException>(() => product.UpdateDetails(newName, newDescription, newPrice));
-        }
-
-        [Fact]
-        public void UpdateDetails_WithNegativePrice_ShouldThrowException()
-        {
-            // Arrange
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
-            var newName = "Updated Product";
-            var newDescription = "Updated Description";
-            var newPrice = -20.99m;
-
-            // Act & Assert
-            Assert.Throws<DomainException>(() => product.UpdateDetails(newName, newDescription, newPrice));
-        }
-
-        [Fact]
-        public void UpdateStock_WithValidData_ShouldUpdateStock()
-        {
-            // Arrange
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
-            var newStock = 200;
-
-            // Act
-            product.UpdateStock(newStock);
-
-            // Assert
-            Assert.Equal(newStock, product.Stock);
-            Assert.NotNull(product.UpdatedAt);
-        }
-
-        [Fact]
-        public void UpdateStock_WithNegativeStock_ShouldThrowException()
-        {
-            // Arrange
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
-            var newStock = -200;
-
-            // Act & Assert
-            Assert.Throws<DomainException>(() => product.UpdateStock(newStock));
+            Assert.Throws<DomainException>(() => product.UpdateDetails(newName, newDescription, newUrlLogo, newApiKey, newAssistantId, newRealmId));
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Application.UnitTests
         {
             // Arrange
             var productId = Guid.NewGuid();
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
+            var product = new Product("Test Product", "Test Description", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890");
             _mockRepository.Setup(r => r.GetByIdAsync(productId))
                 .ReturnsAsync(product);
 
@@ -38,8 +38,10 @@ namespace Application.UnitTests
             Assert.Equal(product.Id, result.Id);
             Assert.Equal(product.Name, result.Name);
             Assert.Equal(product.Description, result.Description);
-            Assert.Equal(product.Price, result.Price);
-            Assert.Equal(product.Stock, result.Stock);
+            Assert.Equal(product.URL_Logo, result.URL_Logo);
+            Assert.Equal(product.api_key, result.api_key);
+            Assert.Equal(product.assistant_id, result.assistant_id);
+            Assert.Equal(product.realm_id, result.realm_id);
         }
 
         [Fact]
@@ -48,7 +50,7 @@ namespace Application.UnitTests
             // Arrange
             var productId = Guid.NewGuid();
             _mockRepository.Setup(r => r.GetByIdAsync(productId))
-                .ReturnsAsync((Product)null);
+                .ReturnsAsync((Product?)null);
 
             // Act
             var result = await _service.GetByIdAsync(productId);
@@ -63,8 +65,8 @@ namespace Application.UnitTests
             // Arrange
             var products = new List<Product>
             {
-                new Product("Product 1", "Description 1", 10.99m, 100),
-                new Product("Product 2", "Description 2", 20.99m, 200)
+                new Product("Product 1", "Description 1", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890"),
+                new Product("Product 2", "Description 2", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890")
             };
             _mockRepository.Setup(r => r.GetAllAsync())
                 .ReturnsAsync(products);
@@ -83,20 +85,25 @@ namespace Application.UnitTests
             // Arrange
             var name = "Test Product";
             var description = "Test Description";
-            var price = 10.99m;
-            var stock = 100;
+            var urlLogo = "https://example.com/logo.png";
+            var apiKey = "1234567890";
+            var assistantId = "1234567890";
+            var realmId = "1234567890";
+
             _mockRepository.Setup(r => r.AddAsync(It.IsAny<Product>()))
                 .ReturnsAsync((Product p) => p);
 
             // Act
-            var result = await _service.CreateAsync(name, description, price, stock);
+            var result = await _service.CreateAsync(name, description, urlLogo, apiKey, assistantId, realmId);
 
             // Assert
             Assert.NotNull(result);
             Assert.Equal(name, result.Name);
             Assert.Equal(description, result.Description);
-            Assert.Equal(price, result.Price);
-            Assert.Equal(stock, result.Stock);
+            Assert.Equal(urlLogo, result.URL_Logo);
+            Assert.Equal(apiKey, result.api_key);
+            Assert.Equal(assistantId, result.assistant_id);
+            Assert.Equal(realmId, result.realm_id);
             _mockRepository.Verify(r => r.AddAsync(It.IsAny<Product>()), Times.Once);
         }
 
@@ -105,12 +112,12 @@ namespace Application.UnitTests
         {
             // Arrange
             var productId = Guid.NewGuid();
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
+            var product = new Product("Test Product", "Test Description", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890");
             _mockRepository.Setup(r => r.GetByIdAsync(productId))
                 .ReturnsAsync(product);
 
             // Act
-            await _service.UpdateAsync(productId, "Updated Name", "Updated Description", 20.99m);
+            await _service.UpdateAsync(productId, "Updated Name", "Updated Description", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890");
 
             // Assert
             _mockRepository.Verify(r => r.UpdateAsync(It.IsAny<Product>()), Times.Once);
@@ -122,40 +129,11 @@ namespace Application.UnitTests
             // Arrange
             var productId = Guid.NewGuid();
             _mockRepository.Setup(r => r.GetByIdAsync(productId))
-                .ReturnsAsync((Product)null);
+                .ReturnsAsync((Product?)null);
 
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(() =>
-                _service.UpdateAsync(productId, "Updated Name", "Updated Description", 20.99m));
-        }
-
-        [Fact]
-        public async Task UpdateStock_WhenProductExists_ShouldUpdateStock()
-        {
-            // Arrange
-            var productId = Guid.NewGuid();
-            var product = new Product("Test Product", "Test Description", 10.99m, 100);
-            _mockRepository.Setup(r => r.GetByIdAsync(productId))
-                .ReturnsAsync(product);
-
-            // Act
-            await _service.UpdateStockAsync(productId, 200);
-
-            // Assert
-            _mockRepository.Verify(r => r.UpdateAsync(It.IsAny<Product>()), Times.Once);
-        }
-
-        [Fact]
-        public async Task UpdateStock_WhenProductDoesNotExist_ShouldThrowException()
-        {
-            // Arrange
-            var productId = Guid.NewGuid();
-            _mockRepository.Setup(r => r.GetByIdAsync(productId))
-                .ReturnsAsync((Product)null);
-
-            // Act & Assert
-            await Assert.ThrowsAsync<Exception>(() =>
-                _service.UpdateStockAsync(productId, 200));
+                _service.UpdateAsync(productId, "Updated Name", "Updated Description", "https://example.com/logo.png", "1234567890", "1234567890", "1234567890"));
         }
 
         [Fact]

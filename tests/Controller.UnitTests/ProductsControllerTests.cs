@@ -184,39 +184,8 @@ public class ProductsControllerTests : ControllerTestBase
         VerifyAll();
     }
 
-    [Fact]
-    public async Task UpdateStock_WhenProductExists_ShouldReturnNoContent()
-    {
-        // Arrange
-        var id = Guid.NewGuid();
-        var request = new UpdateStockRequest { Stock = 15 };
-        _productServiceMock.Setup(x => x.UpdateStockAsync(id, request.Stock))
-            .Returns(Task.CompletedTask);
 
-        // Act
-        var response = await Client.PatchAsJsonAsync($"{_baseUrl}/{id}/stock", request);
 
-        // Assert
-        response.Should().HaveStatusCode(HttpStatusCode.NoContent);
-        VerifyAll();
-    }
-
-    [Fact]
-    public async Task UpdateStock_WhenProductDoesNotExist_ShouldReturnNotFound()
-    {
-        // Arrange
-        var id = Guid.NewGuid();
-        var request = new UpdateStockRequest { Stock = 15 };
-        _productServiceMock.Setup(x => x.UpdateStockAsync(id, request.Stock))
-            .ThrowsAsync(new Exception("Product not found"));
-
-        // Act
-        var response = await Client.PatchAsJsonAsync($"{_baseUrl}/{id}/stock", request);
-
-        // Assert
-        response.Should().HaveStatusCode(HttpStatusCode.NotFound);
-        VerifyAll();
-    }
 
     [Fact]
     public async Task Delete_WhenProductExists_ShouldReturnNoContent()

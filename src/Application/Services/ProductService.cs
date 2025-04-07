@@ -50,13 +50,15 @@ namespace Application.Services
         /// </summary>
         /// <param name="name">The name of the product</param>
         /// <param name="description">The description of the product</param>
-        /// <param name="price">The price of the product</param>
-        /// <param name="stock">The initial stock quantity</param>
+        /// <param name="urlLogo">The URL of the product logo</param>
+        /// <param name="apiKey">The API key for the product</param>
+        /// <param name="assistantId">The assistant ID for the product</param>
+        /// <param name="realmId">The realm ID for the product</param>
         /// <returns>The created product DTO</returns>
         /// <exception cref="DomainException">Thrown when the product data is invalid</exception>
-        public async Task<ProductDto> CreateAsync(string name, string description, decimal price, int stock)
+        public async Task<ProductDto> CreateAsync(string name, string description, string urlLogo, string apiKey, string assistantId, string realmId)
         {
-            var product = new Product(name, description, price, stock);
+            var product = new Product(name, description, urlLogo, apiKey, assistantId, realmId);
             await _productRepository.AddAsync(product);
             return MapToDto(product);
         }
@@ -67,33 +69,19 @@ namespace Application.Services
         /// <param name="id">The unique identifier of the product to update</param>
         /// <param name="name">The new name of the product</param>
         /// <param name="description">The new description of the product</param>
-        /// <param name="price">The new price of the product</param>
+        /// <param name="urlLogo">The new URL of the product logo</param>
+        /// <param name="apiKey">The new API key for the product</param>
+        /// <param name="assistantId">The new assistant ID for the product</param>
+        /// <param name="realmId">The new realm ID for the product</param>
         /// <exception cref="Exception">Thrown when the product is not found</exception>
         /// <exception cref="DomainException">Thrown when the update data is invalid</exception>
-        public async Task UpdateAsync(Guid id, string name, string description, decimal price)
+        public async Task UpdateAsync(Guid id, string name, string description, string urlLogo, string apiKey, string assistantId, string realmId)
         {
             var product = await _productRepository.GetByIdAsync(id);
             if (product == null)
                 throw new Exception("Product not found");
 
-            product.UpdateDetails(name, description, price);
-            await _productRepository.UpdateAsync(product);
-        }
-
-        /// <summary>
-        /// Updates the stock quantity of an existing product
-        /// </summary>
-        /// <param name="id">The unique identifier of the product to update</param>
-        /// <param name="newStock">The new stock quantity</param>
-        /// <exception cref="Exception">Thrown when the product is not found</exception>
-        /// <exception cref="DomainException">Thrown when the new stock quantity is invalid</exception>
-        public async Task UpdateStockAsync(Guid id, int newStock)
-        {
-            var product = await _productRepository.GetByIdAsync(id);
-            if (product == null)
-                throw new Exception("Product not found");
-
-            product.UpdateStock(newStock);
+            product.UpdateDetails(name, description, urlLogo, apiKey, assistantId, realmId);
             await _productRepository.UpdateAsync(product);
         }
 
@@ -108,13 +96,18 @@ namespace Application.Services
 
         private static ProductDto MapToDto(Product product)
         {
+            if (product == null)
+                throw new ArgumentNullException(nameof(product));
+
             return new ProductDto
             {
                 Id = product.Id,
-                Name = product.Name ?? string.Empty,
-                Description = product.Description ?? string.Empty,
-                Price = product.Price,
-                Stock = product.Stock,
+                Name = product.Name,
+                Description = product.Description,
+                URL_Logo = product.URL_Logo,
+                api_key = product.api_key,
+                assistant_id = product.assistant_id,
+                realm_id = product.realm_id,
                 CreatedAt = product.CreatedAt,
                 UpdatedAt = product.UpdatedAt
             };

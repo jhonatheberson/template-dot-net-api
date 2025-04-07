@@ -59,8 +59,10 @@ namespace API.Controllers
                 var product = await _productService.CreateAsync(
                     request.Name,
                     request.Description,
-                    request.Price,
-                    request.Stock);
+                    request.URL_Logo,
+                    request.api_key,
+                    request.assistant_id,
+                    request.realm_id);
 
                 return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
             }
@@ -81,7 +83,7 @@ namespace API.Controllers
         {
             try
             {
-                await _productService.UpdateAsync(id, request.Name, request.Description, request.Price);
+                await _productService.UpdateAsync(id, request.Name, request.Description, request.URL_Logo, request.api_key, request.assistant_id, request.realm_id);
                 return NoContent();
             }
             catch (Exception ex)
@@ -93,28 +95,7 @@ namespace API.Controllers
             }
         }
 
-        /// <summary>
-        /// Update product stock
-        /// </summary>
-        [HttpPatch("{id}/stock")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdateStock(Guid id, [FromBody] UpdateStockRequest request)
-        {
-            try
-            {
-                await _productService.UpdateStockAsync(id, request.Stock);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message == "Product not found")
-                    return NotFound();
 
-                return BadRequest(ex.Message);
-            }
-        }
 
         /// <summary>
         /// Delete a product
@@ -133,19 +114,19 @@ namespace API.Controllers
     {
         public required string Name { get; set; }
         public required string Description { get; set; }
-        public decimal Price { get; set; }
-        public int Stock { get; set; }
+        public required string URL_Logo { get; set; }
+        public required string api_key { get; set; }
+        public required string assistant_id { get; set; }
+        public required string realm_id { get; set; }
     }
 
     public class UpdateProductRequest
     {
         public required string Name { get; set; }
         public required string Description { get; set; }
-        public decimal Price { get; set; }
-    }
-
-    public class UpdateStockRequest
-    {
-        public int Stock { get; set; }
+        public required string URL_Logo { get; set; }
+        public required string api_key { get; set; }
+        public required string assistant_id { get; set; }
+        public required string realm_id { get; set; }
     }
 }

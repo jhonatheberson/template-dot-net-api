@@ -186,6 +186,143 @@ The project uses the following configuration files:
 - `appsettings.Development.json`: Development-specific settings
 - `.editorconfig`: Code style and formatting rules
 
+## 🔄 Migrações do Banco de Dados
+
+### Criar Nova Migração
+
+```bash
+dotnet ef migrations add NomeDaMigracao --project src/Infrastructure --startup-project src/API
+```
+
+### Aplicar Migrações
+
+```bash
+dotnet ef database update --project src/Infrastructure --startup-project src/API
+```
+
+### Remover Última Migração
+
+```bash
+dotnet ef migrations remove --project src/Infrastructure --startup-project src/API
+```
+
+## 🛠️ Desenvolvimento
+
+### Adicionar Nova Entidade
+
+1. Criar classe da entidade em `src/Domain/Entities`
+2. Adicionar DbSet no `ApplicationDbContext`
+3. Configurar mapeamento no `OnModelCreating`
+4. Criar e aplicar migração
+
+### Adicionar Novo Repositório
+
+1. Criar interface em `src/Domain/Repositories`
+2. Implementar em `src/Infrastructure/Repositories`
+3. Registrar no container de DI
+
+## 📝 Notas
+
+- O certificado HTTPS é apenas para desenvolvimento
+- Em produção, use certificados válidos
+- As credenciais do banco de dados são apenas para desenvolvimento
+- Em produção, use variáveis de ambiente ou secrets para credenciais
+
+## 🔧 Configuração do Ambiente Local
+
+### 1. Configuração do Banco de Dados
+
+```bash
+# Acessar o PostgreSQL
+sudo -u postgres psql
+
+# Criar banco de dados e usuário
+CREATE DATABASE dddtemplate;
+CREATE USER postgres WITH PASSWORD 'postgres';
+GRANT ALL PRIVILEGES ON DATABASE dddtemplate TO postgres;
+\q
+```
+
+### 2. Instalação das Ferramentas do EF Core
+
+```bash
+# Instalar a ferramenta do EF Core globalmente
+dotnet tool install --global dotnet-ef
+
+# Adicionar ao PATH (Linux/MacOS)
+export PATH="$PATH:$HOME/.dotnet/tools"
+echo 'export PATH="$PATH:$HOME/.dotnet/tools"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### 3. Configuração do Certificado HTTPS
+
+```bash
+# Criar diretório para certificados
+mkdir -p certificates
+
+# Gerar certificado de desenvolvimento
+dotnet dev-certs https -ep ./certificates/aspnetapp.pfx -p YourSecurePassword123!
+dotnet dev-certs https --trust
+```
+
+## 🏃‍♂️ Executando Localmente
+
+### 1. Restaurar Dependências
+
+```bash
+dotnet restore
+```
+
+### 2. Aplicar Migrações do Banco de Dados
+
+```bash
+# Criar migração inicial (se necessário)
+dotnet ef migrations add InitialCreate --project src/Infrastructure --startup-project src/API
+
+# Aplicar migrações
+dotnet ef database update --project src/Infrastructure --startup-project src/API
+```
+
+### 3. Executar a Aplicação
+
+```bash
+cd src/API
+dotnet run
+```
+
+A API estará disponível em:
+
+- HTTP: <http://localhost:5254>
+- HTTPS: <https://localhost:7186>
+- Swagger: <https://localhost:7186/swagger>
+
+## 🐳 Executando com Docker
+
+### 1. Construir e Executar os Containers
+
+```bash
+# Construir e iniciar todos os serviços
+docker-compose up --build
+
+# Ou em modo detached
+docker-compose up -d --build
+```
+
+Os serviços estarão disponíveis em:
+
+- API:
+  - HTTP: <http://localhost:5254>
+  - HTTPS: <https://localhost:7186>
+- PostgreSQL: localhost:5432
+- Redis: localhost:6379
+
+### 2. Parar os Containers
+
+```bash
+docker-compose down
+```
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
