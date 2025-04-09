@@ -7,6 +7,7 @@ while ! nc -z postgres 5432; do
 done
 echo "PostgreSQL is ready!"
 
+
 # Run migrations
 echo "Running database migrations..."
 export PATH="$PATH:/root/.dotnet/tools"

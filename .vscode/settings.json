@@ -8,5 +8,6 @@
   "dotnet-test-explorer.enableTelemetry": false,
   "dotnet.defaultSolution": "DDDTemplate.sln",
   "omnisharp.enableRoslynAnalyzers": true,
-  "omnisharp.enableEditorConfigSupport": true
+  "omnisharp.enableEditorConfigSupport": true,
+  "FSharp.suggestGitignore": false
 }

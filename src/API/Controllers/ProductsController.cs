@@ -5,6 +5,7 @@ using Application.DTOs;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using API.Requests.Products; // Atualizado para refletir o novo namespace
 
 namespace API.Controllers
 {
@@ -95,8 +96,6 @@ namespace API.Controllers
             }
         }
 
-
-
         /// <summary>
         /// Delete a product
         /// </summary>
@@ -108,25 +107,5 @@ namespace API.Controllers
             await _productService.DeleteAsync(id);
             return NoContent();
         }
-    }
-
-    public class CreateProductRequest
-    {
-        public required string Name { get; set; }
-        public required string Description { get; set; }
-        public required string URL_Logo { get; set; }
-        public required string api_key { get; set; }
-        public required string assistant_id { get; set; }
-        public required string realm_id { get; set; }
-    }
-
-    public class UpdateProductRequest
-    {
-        public required string Name { get; set; }
-        public required string Description { get; set; }
-        public required string URL_Logo { get; set; }
-        public required string api_key { get; set; }
-        public required string assistant_id { get; set; }
-        public required string realm_id { get; set; }
     }
 }

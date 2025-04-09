@@ -5,15 +5,18 @@ namespace Domain.Entities
 {
     public class Product : BaseEntity
     {
+        public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string URL_Logo { get; private set; }
         public string api_key { get; private set; }
         public string assistant_id { get; private set; }
         public string realm_id { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public DateTime? UpdatedAt { get; private set; }
 
-        // Construtor para o EF Core
-        protected Product()
+        // Constructor for EF Core
+        private Product()
         {
             Name = string.Empty;
             Description = string.Empty;
@@ -40,12 +43,14 @@ namespace Domain.Entities
             if (string.IsNullOrWhiteSpace(realmId))
                 throw new DomainException("Product realm id cannot be empty");
 
+            Id = Guid.NewGuid();
             Name = name;
             Description = description;
             URL_Logo = urlLogo;
             api_key = apiKey;
             assistant_id = assistantId;
             realm_id = realmId;
+            CreatedAt = DateTime.UtcNow;
         }
 
         public void UpdateDetails(string name, string description, string urlLogo, string apiKey, string assistantId, string realmId)

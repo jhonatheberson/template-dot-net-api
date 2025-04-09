@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.DTOs;
+using Application.Mappers; // Importar o mapper
 using Domain.Entities;
 using Domain.Interfaces;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Application.Services
         public async Task<ProductDto?> GetByIdAsync(Guid id)
         {
             var product = await _productRepository.GetByIdAsync(id);
-            return product == null ? null : MapToDto(product);
+            return product == null ? null : ProductMapper.ToDto(product);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Application.Services
         public async Task<IEnumerable<ProductDto>> GetAllAsync()
         {
             var products = await _productRepository.GetAllAsync();
-            return MapToDto(products);
+            return ProductMapper.ToDto(products);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Application.Services
         {
             var product = new Product(name, description, urlLogo, apiKey, assistantId, realmId);
             await _productRepository.AddAsync(product);
-            return MapToDto(product);
+            return ProductMapper.ToDto(product);
         }
 
         /// <summary>
@@ -92,30 +93,6 @@ namespace Application.Services
         public async Task DeleteAsync(Guid id)
         {
             await _productRepository.DeleteAsync(id);
-        }
-
-        private static ProductDto MapToDto(Product product)
-        {
-            if (product == null)
-                throw new ArgumentNullException(nameof(product));
-
-            return new ProductDto
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                URL_Logo = product.URL_Logo,
-                api_key = product.api_key,
-                assistant_id = product.assistant_id,
-                realm_id = product.realm_id,
-                CreatedAt = product.CreatedAt,
-                UpdatedAt = product.UpdatedAt
-            };
-        }
-
-        private static IEnumerable<ProductDto> MapToDto(IEnumerable<Product> products)
-        {
-            return products.Select(MapToDto).ToList();
         }
     }
 }
