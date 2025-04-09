@@ -5,15 +5,15 @@ namespace Domain.Entities
 {
     public class Product : BaseEntity
     {
-        public Guid Id { get; private set; }
+        public new Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public string URL_Logo { get; private set; }
         public string api_key { get; private set; }
         public string assistant_id { get; private set; }
         public string realm_id { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-        public DateTime? UpdatedAt { get; private set; }
+        public new DateTime CreatedAt { get; private set; }
+        public new DateTime? UpdatedAt { get; private set; }
 
         // Constructor for EF Core
         private Product()
